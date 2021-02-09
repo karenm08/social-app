@@ -1,12 +1,13 @@
 import React from 'react'
-import PageHeader from './index'
+import Login from './index'
 import Logout from './loggedOut'
 
 
 export default {
     title: 'PageHeader',
-    component: PageHeader,
+    component: Login,
+    component: Logout,
   }
 
-  export const LoggedIn = () => <PageHeader/>
+  export const LoggedIn = () => <Login/>
   export const LoggedOut = () => <Logout/>
