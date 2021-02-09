@@ -48,9 +48,6 @@ export default function Post({post, cardClicked, commentClicked, likeClicked}) {
 </CardActionArea>
 
 <CardActions>
- {/* <IconButton aria-label="like" onClick={() => likeClicked({postId: post.id})}>
-    <Favorite fontSize="large" />
-  </IconButton> */}
   <IconButton aria-label="like" onClick={() => likeClicked({postId: post.id})}>
   {post.liked ? <Favorite fontSize="large" /> : <FavoriteBorder fontSize="large" /> }
 </IconButton>
