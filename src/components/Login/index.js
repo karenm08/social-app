@@ -54,7 +54,7 @@ export default function NewPost({ onSubmit, onClose }) {
     <Card className={classes.root}>
       <CardHeader
         className={classes.header}
-        title="Post Image"
+        title={tabValue === 0 ? "Login" : "Sign Up"}
       />
       <CardContent>
         <Tabs
@@ -65,25 +65,26 @@ export default function NewPost({ onSubmit, onClose }) {
           textColor="primary"
           onChange={handleTabChange}
         >
-          <Tab label="IMAGE URL" />
-          <Tab label="FILE UPLOAD" />
+          <Tab label="LOGIN" />
+          <Tab label="SIGN UP" />
         </Tabs>
       </CardContent>
       <CardContent>
         {tabValue === 0 ? (
           <Typography>
             <FormControl fullWidth={true}>
-                <Input className={classes.input} placeholder="Image URL"></Input>
-                <Input className={classes.input} placeholder="Description"></Input>
-                <Button className={classes.postButton} value="post">POST</Button>
+                <Input className={classes.input} placeholder="username"></Input>
+                <Input className={classes.input} placeholder="password"></Input>
+                <Button className={classes.postButton} value="submit">SUMBIT</Button>
             </FormControl>
           </Typography>
         ) : (
-          <Typography>
-           <Button className={classes.cameraButton}><CameraAltIcon></CameraAltIcon></Button> 
+          <Typography> 
                 <FormControl fullWidth={true}>
-                    <Input className={classes.input} placeholder="Image URL"></Input>
-                    <Button className={classes.postButton} value="post">POST</Button>
+                  <Input className={classes.input} placeholder="Email"></Input>
+                  <Input className={classes.input} placeholder="username"></Input>
+                  <Input className={classes.input} placeholder="password"></Input>
+                  <Button className={classes.postButton} value="post">SUMBIT</Button>
                 </FormControl>
           </Typography>
         )}
