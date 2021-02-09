@@ -33,7 +33,7 @@
 
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
+import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import {
   Card,
   Tabs,
@@ -61,6 +61,16 @@ const useStyles = makeStyles((theme) => ({
   input:{
     width:'80%',
     margin:'30px auto 30px auto'
+},
+
+cameraButton:{
+    marginLeft:50,
+    borderRadius: '60%',
+    color: '#3f51b5'
+},
+postButton:{
+    color: '#3f51b5',
+    fontWeight: 'bold'
 }
 }));
 
@@ -98,15 +108,16 @@ export default function NewPost({ onSubmit, onClose }) {
             <FormControl fullWidth={true}>
                 <Input className={classes.input} placeholder="Image URL"></Input>
                 <Input className={classes.input} placeholder="Description"></Input>
-                <Button  value="post">POST</Button>
+                <Button className={classes.postButton} value="post">POST</Button>
             </FormControl>
           </Typography>
         ) : (
           <Typography>
-            <FormControl fullWidth={true}>
-                <Input className={classes.input} placeholder="Image URL"></Input>
-                <Button  value="post">POST</Button>
-            </FormControl>
+           <Button className={classes.cameraButton}><CameraAltIcon></CameraAltIcon></Button> 
+                <FormControl fullWidth={true}>
+                    <Input className={classes.input} placeholder="Image URL"></Input>
+                    <Button className={classes.postButton} value="post">POST</Button>
+                </FormControl>
           </Typography>
         )}
       </CardContent>
