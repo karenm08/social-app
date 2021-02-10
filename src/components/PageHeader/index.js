@@ -166,7 +166,8 @@ export default function PrimarySearchAppBar({ onSubmit }) {
               {/* <Button onClick={() => onSubmit({search:search})}></Button> */}
             </div>
             <InputBase
-              // onChange={event => setSearch(event.target.value)}
+              onKeyUp={event => {if(event.keyCode === 13){onSubmit({search:search})}} }
+              onChange={event => setSearch(event.target.value)}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,

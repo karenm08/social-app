@@ -9,7 +9,7 @@ export default {
     component: LogoutPage,
   }
 
-  const events = actions({ onSearch: 'search clicked' })
+  const events = actions({ onSearch: 'search clicked',onSubmit: 'submit clicked' })
 
   export const LoggedIn = () => <LoginPage {...events}/>
   export const LoggedOut = () => <LogoutPage {...events}/>

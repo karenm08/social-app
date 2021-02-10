@@ -20,6 +20,6 @@ export default {
     component: Login,
   }
 
-  const events = actions({ onSubmit: 'submit clicked' })
+  const events = actions({ onSubmit: 'submit clicked' , onClose: 'close clicked'})
 
   export const Default = () => <Login signUp={fakeSignUp} login={fakelogin} {...events}/>
