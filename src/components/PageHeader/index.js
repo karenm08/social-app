@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,6 +11,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -76,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({ onSubmit }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -142,6 +143,8 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
+  const [search, setSearch] = useState('')
+  
   return (
     <div className={classes.grow}>
       <AppBar position="static">
@@ -160,8 +163,10 @@ export default function PrimarySearchAppBar() {
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
+              {/* <Button onClick={() => onSubmit({search:search})}></Button> */}
             </div>
             <InputBase
+              // onChange={event => setSearch(event.target.value)}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
