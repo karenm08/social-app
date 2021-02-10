@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import CloseIcon from '@material-ui/icons/Close';
 import {
   Card,
   Tabs,
@@ -38,7 +38,12 @@ cameraButton:{
 postButton:{
     color: '#3f51b5',
     fontWeight: 'bold'
-}
+},
+closeButton:{
+  height: 60,
+  width: 60,
+  borderRadius: '50%',
+},
 }));
 
 export default function NewPost({ onSubmit, onClose }) {
@@ -52,6 +57,7 @@ export default function NewPost({ onSubmit, onClose }) {
 
   return (
     <Card className={classes.root}>
+      <Button className={classes.closeButton}><CloseIcon/></Button>
       <CardHeader
         className={classes.header}
         title={tabValue === 0 ? "Login" : "Sign Up"}

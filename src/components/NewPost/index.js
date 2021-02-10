@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState , View} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import CloseIcon from '@material-ui/icons/Close';
 import {
   Card,
   Tabs,
@@ -32,8 +33,18 @@ const useStyles = makeStyles((theme) => ({
 
 cameraButton:{
     marginLeft:50,
-    borderRadius: '60%',
+    height: 60,
+    width: 60,
+    borderRadius: '50%',
     color: '#3f51b5'
+},
+closeButton:{
+  height: 60,
+  width: 60,
+  borderRadius: '50%',
+  // position: 'absolute',
+  top:0,
+  right:0,
 },
 postButton:{
     color: '#3f51b5',
@@ -41,7 +52,7 @@ postButton:{
 }
 }));
 
-export default function NewPost({ onSubmit, onClose }) {
+export default function NewPost({ upload, onSubmit, onClose }) {
   const classes = useStyles();
 
   const [tabValue, setTabValue] = useState(0);
@@ -50,8 +61,13 @@ export default function NewPost({ onSubmit, onClose }) {
     setTabValue(newValue);
   };
 
+  const [descripition, setFileUploadDes] = useState('')
+  const [imageURL, setImageURL] = useState('')
+  const [imgDescripition, setImageURLDes] = useState('')
+
   return (
     <Card className={classes.root}>
+      <Button className={classes.closeButton}><CloseIcon/></Button>
       <CardHeader
         className={classes.header}
         title="Post Image"
@@ -73,17 +89,17 @@ export default function NewPost({ onSubmit, onClose }) {
         {tabValue === 0 ? (
           <Typography>
             <FormControl fullWidth={true}>
-                <Input className={classes.input} placeholder="Image URL"></Input>
-                <Input className={classes.input} placeholder="Description"></Input>
-                <Button className={classes.postButton} value="post">POST</Button>
+                <Input onChange={event => setImageURL(event.target.value)} className={classes.input} placeholder="Image URL"></Input>
+                <Input onChange={event => setImageURLDes(event.target.value)} className={classes.input} placeholder="Description"></Input>
+                <Button className={classes.postButton} value="post" onClick={() => onSubmit({descripition: imgDescripition, imageURL:imageURL,type:upload.type})}>POST</Button>
             </FormControl>
           </Typography>
         ) : (
           <Typography>
            <Button className={classes.cameraButton}><CameraAltIcon></CameraAltIcon></Button> 
                 <FormControl fullWidth={true}>
-                    <Input className={classes.input} placeholder="Image URL"></Input>
-                    <Button className={classes.postButton} value="post">POST</Button>
+                    <Input onChange={event => setFileUploadDes(event.target.value)} className={classes.input} placeholder="Image URL"></Input>
+                    <Button className={classes.postButton} value="post" onClick={() => onSubmit({descripition: descripition})}>POST</Button>
                 </FormControl>
           </Typography>
         )}
