@@ -11,6 +11,7 @@ import {
   Typography,
   Input,
   Button,
+  IconButton,
   FormControl
 } from "@material-ui/core";
 
@@ -67,7 +68,7 @@ export default function NewPost({ imgUpload, onSubmit, fileUpload , onClose }) {
 
   return (
     <Card className={classes.root}>
-      <Button className={classes.closeButton}><CloseIcon/></Button>
+       <IconButton className={classes.closeButton} onClick={(event) => {onClose(event)}}><CloseIcon/></IconButton>
       <CardHeader
         className={classes.header}
         title="Post Image"

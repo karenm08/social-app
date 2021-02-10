@@ -19,6 +19,6 @@ export default {
     component: NewPost,
   }
 
-  const events = actions({ onSubmit: 'submit clicked' })
+  const events = actions({ onSubmit: 'submit clicked' , onClose: 'close clicked'})
 
   export const Default = () => <NewPost imgUpload={fakeImageUpload} fileUpload={fakeFileUpload} {...events}/>
