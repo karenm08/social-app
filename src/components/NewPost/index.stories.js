@@ -2,10 +2,16 @@ import React from 'react'
 import NewPost from './index'
 import { actions } from '@storybook/addon-actions'
 
-const fakeUpload = {
+const fakeImageUpload = {
   description: "the text typed into the description textarea",
   imageURL: "the text typed into the image url textfield",
   type: "url"
+}
+
+const fakeFileUpload = {
+  description: "the text typed into the description textarea",
+  file: "",
+  type: "file"
 }
 
 export default {
@@ -15,4 +21,4 @@ export default {
 
   const events = actions({ onSubmit: 'submit clicked' })
 
-  export const Default = () => <NewPost upload={fakeUpload} {...events}/>
+  export const Default = () => <NewPost imgUpload={fakeImageUpload} fileUpload={fakeFileUpload} {...events}/>
