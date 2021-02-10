@@ -46,7 +46,7 @@ closeButton:{
 },
 }));
 
-export default function NewPost({ onSubmit, onClose }) {
+export default function NewPost({ onSubmit, onClose , signUp , login }) {
   const classes = useStyles();
 
   const [tabValue, setTabValue] = useState(0);
@@ -55,6 +55,10 @@ export default function NewPost({ onSubmit, onClose }) {
     setTabValue(newValue);
   };
 
+  const [usename, setUseName] = useState('')
+  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+ 
   return (
     <Card className={classes.root}>
       <Button className={classes.closeButton}><CloseIcon/></Button>
@@ -79,18 +83,18 @@ export default function NewPost({ onSubmit, onClose }) {
         {tabValue === 0 ? (
           <Typography>
             <FormControl fullWidth={true}>
-                <Input className={classes.input} placeholder="username"></Input>
-                <Input className={classes.input} placeholder="password"></Input>
-                <Button className={classes.postButton} value="submit">SUMBIT</Button>
+                <Input onChange={event => setUseName(event.target.value)} className={classes.input} placeholder="Username"></Input>
+                <Input onChange={event => setPassword(event.target.value)} className={classes.input} type="password" placeholder="Password" />
+                <Button className={classes.postButton} value="submit" onClick={() => onSubmit({username: usename, password:password,type:login.type})}>SUMBIT</Button>
             </FormControl>
           </Typography>
         ) : (
           <Typography> 
                 <FormControl fullWidth={true}>
-                  <Input className={classes.input} placeholder="Email"></Input>
-                  <Input className={classes.input} placeholder="username"></Input>
-                  <Input className={classes.input} placeholder="password"></Input>
-                  <Button className={classes.postButton} value="post">SUMBIT</Button>
+                  <Input onChange={event => setEmail(event.target.value)} className={classes.input} placeholder="Email" type="email"></Input>
+                  <Input onChange={event => setUseName(event.target.value)} className={classes.input} placeholder="Username"></Input>
+                  <Input onChange={event => setPassword(event.target.value)} className={classes.input} type="password" placeholder="Password" />
+                  <Button onClick={() => onSubmit({email: email, username: usename, password:password,type:signUp.type})} className={classes.postButton} value="post">SUMBIT</Button>
                 </FormControl>
           </Typography>
         )}
