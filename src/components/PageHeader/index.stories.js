@@ -9,12 +9,18 @@ export default {
     component: LogoutPage,
   }
 
-  const events = actions({ onSearch: 'search clicked',onSubmit: 'submit clicked' })
+  const events = actions({ onSearch: 'search clicked',
+  onSubmit: 'submit clicked',
+  onTitleClicked: 'title clicked',
+  onSignOutClicked: 'sign out clicked',
+  onNewPostClicked: 'new post clicked',
+  onProfileClicked: 'profile clicked',
+  onLoginClicked: 'login clicked'})
 
   export const LoggedIn = () => <LoginPage {...events}/>
   export const LoggedOut = () => <LogoutPage {...events}/>
 
-//   <PageHeader 
+// //   <PageHeader 
 // onTitleClicked={funciton} 
 // onSignOutClicked={function}
 // onNewPostClicked={function}
@@ -22,4 +28,4 @@ export default {
 // onSearch={function}
 // onLoginClicked={function}
 // user={the logged in user object}
-// ></PageHeader>
+// // ></PageHeader>

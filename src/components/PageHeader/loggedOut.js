@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import { Link } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar({onTitleClicked,onLoginClicked}) {
   const classes = useStyles();
 
   return (
@@ -27,8 +28,8 @@ export default function ButtonAppBar() {
         <Toolbar>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
         </IconButton>
-        <Typography variant="h6" className={classes.title}>SocialLOL</Typography>
-        <Button color="inherit">Login</Button>
+        <Link onClick={(event) => {onTitleClicked(event)}} color="inherit" variant="h6" className={classes.title}>SocialLOL</Link>
+        <Button onClick={(event) => {onLoginClicked(event)}}color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>

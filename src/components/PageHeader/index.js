@@ -11,6 +11,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import { Link } from '@material-ui/core';
 import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -77,7 +78,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar({ onSubmit }) {
+export default function PrimarySearchAppBar({ onSubmit, onNewPostClicked,onTitleClicked,onSignOutClicked,onProfileClicked}){
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -113,8 +115,8 @@ export default function PrimarySearchAppBar({ onSubmit }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Sign Out</MenuItem>
+      <MenuItem onClick={handleMenuClose} onClick={() => {onSignOutClicked()}}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose} onClick={() => {onProfileClicked()}}>Sign Out</MenuItem>
     </Menu>
   );
 
@@ -137,7 +139,7 @@ export default function PrimarySearchAppBar({ onSubmit }) {
           color="inherit"
         >
           <AccountCircle />
-        </IconButton>
+        </IconButton >
         <p>Profile</p>
       </MenuItem>
     </Menu>
@@ -155,15 +157,12 @@ export default function PrimarySearchAppBar({ onSubmit }) {
             color="inherit"
             aria-label="open drawer"
           >
-            <AddCircleOutlineIcon />
+            <AddCircleOutlineIcon onClick={(event) => {onNewPostClicked(event)}}/>
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-             SocialLOL
-          </Typography>
+          <Link onClick={(event) => {onTitleClicked(event)}} color="inherit" variant="h6" className={classes.title}>SocialLOL</Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
-              {/* <Button onClick={() => onSubmit({search:search})}></Button> */}
             </div>
             <InputBase
               onKeyUp={event => {if(event.keyCode === 13){onSubmit({search:search})}} }
