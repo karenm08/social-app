@@ -1,9 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import { getPosts } from './network'
 import PageHeader from '../src/components/PageHeader/index'
 import Post from '../src/components/Post/index'
 
 function App() {
+
+  (async () => {
+    const result = await getPosts()
+    console.log(result)
+  })()
+
   return (
     <div className="App">
     </div>
