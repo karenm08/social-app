@@ -1,29 +1,63 @@
-import './App.css';
-import { useEffect , useState} from 'react'
-import { getPosts } from './network'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import PostsPage from './layouts/PostPage'
 import PostDetailsPage from './layouts/PostDetailsPage'
 
-function App() {
-  // const [posts, setPosts] = useState([])
-
-  // //useEffect so it will not reder twice
-  // useEffect(() => {
-  //   (async () => {
-  //     const result = await getPosts()
-  //     setPosts(result.posts)
-  //   })()
-  // }, [])
-  
+export default function App() {
   return (
-    <div>
-    <PostsPage></PostsPage>
-    <PostDetailsPage></PostDetailsPage>
-    </div>
-  );
+    <Router>
+      <Switch>
+        <Route path="/login">
+          <p>Login Form</p>
+        </Route>
+        <Route path="/profile">
+          <p>Profile Page</p>
+        </Route>
+        <Route path="/newPost">
+          <p>Create New Post Page</p>
+        </Route>
+        <Route path="/posts/:postId">
+          <PostDetailsPage></PostDetailsPage>
+        </Route>
+        <Route path="/">
+          <PostsPage></PostsPage>
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
 
-export default App;
+// import './App.css';
+// import { useEffect , useState} from 'react'
+// import { getPosts } from './network'
+// import PostsPage from './layouts/PostPage'
+// import PostDetailsPage from './layouts/PostDetailsPage'
+
+// function App() {
+//   // const [posts, setPosts] = useState([])
+
+//   // //useEffect so it will not reder twice
+//   // useEffect(() => {
+//   //   (async () => {
+//   //     const result = await getPosts()
+//   //     setPosts(result.posts)
+//   //   })()
+//   // }, [])
+  
+//   return (
+//     <div>
+//     <PostsPage></PostsPage>
+//     <PostDetailsPage></PostDetailsPage>
+//     </div>
+//   );
+// }
+
+// export default App;
 
 // import React from "react";
 
