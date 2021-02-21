@@ -26,7 +26,7 @@ export default function Post({post, cardClicked, commentClicked, likeClicked}) {
   title={post.user.username}
 />
 
-<CardActionArea onClick={() => cardClicked({postId: post.id})}>
+<CardActionArea onClick={() => cardClicked({postId: post._id})}>
   <CardMedia className={classes.media}
     component="img"
     image={post.imageUrl}
@@ -48,10 +48,10 @@ export default function Post({post, cardClicked, commentClicked, likeClicked}) {
 </CardActionArea>
 
 <CardActions>
-  <IconButton aria-label="like" onClick={() => likeClicked({postId: post.id})}>
+  <IconButton aria-label="like" onClick={() => likeClicked({postId: post._id})}>
   {post.liked ? <Favorite fontSize="large" /> : <FavoriteBorder fontSize="large" /> }
 </IconButton>
-  <IconButton aria-label="comment" onClick={() => commentClicked({postId: post.id})}>
+  <IconButton aria-label="comment" onClick={() => commentClicked({postId: post._id})}>
     <Comment fontSize="large" />
   </IconButton>
 </CardActions>

@@ -4,7 +4,7 @@ import { actions } from '@storybook/addon-actions'
 
 
 const fakePost = {
-  id: "post1",
+  _id: "post1",
   imageUrl: "https://i.imgur.com/aVqLAG7.png",
   description: "It's in the shed",
   liked: false,

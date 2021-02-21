@@ -28,7 +28,7 @@ export default function PostsPage() {
     {
       posts.map(post => (
         <Post 
-        key={post.id} 
+        key={post._id} 
         post={post}
         likeClicked={likeClicked}
         cardClicked={cardClicked}
