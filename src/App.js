@@ -1,14 +1,17 @@
 import './App.css';
+import { useEffect } from 'react'
 import { getPosts } from './network'
-import PageHeader from '../src/components/PageHeader/index'
-import Post from '../src/components/Post/index'
 
 function App() {
 
-  (async () => {
-    const result = await getPosts()
-    console.log(result)
-  })()
+  //useEffect so it will not reder twice
+  useEffect(() => {
+    (async () => {
+      const result = await getPosts()
+      console.log(result)
+    })()
+  }, [])
+  
 
   return (
     <div className="App">
