@@ -1,20 +1,26 @@
 import './App.css';
-import { useEffect } from 'react'
+import { useEffect , useState} from 'react'
 import { getPosts } from './network'
+import Post from './components/Post'
 
 function App() {
+  const [posts, setPosts] = useState([])
 
   //useEffect so it will not reder twice
   useEffect(() => {
     (async () => {
       const result = await getPosts()
-      console.log(result)
+      setPosts(result.posts)
     })()
   }, [])
   
-
   return (
-    <div className="App">
+    <div>
+    {
+      posts.map(post => (
+        <Post key={post.id} post={post}></Post>
+      ))
+    }
     </div>
   );
 }
