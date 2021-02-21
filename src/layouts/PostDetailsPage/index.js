@@ -1,14 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import PostDetails from '../../components/PostDetails'
 import { getPost } from '../../network2'
+import { useParams } from "react-router-dom"
 
 export default function PostDetailsPage() {
   const [post, setPost] = useState()
+  // The route was defined as <Route path="/posts/:postId">
+  // So useParams will contain a property postId that contains the data we need
+  let { postId } = useParams()
 
   useEffect(() => {
     (async () => {
-        // Hard code one of your post ids for now, we'll make this dynamic later
-        const result = await getPost({postId: "postId002"})
+        const result = await getPost({postId: postId})
         setPost(result.post)
     })()
   }, [])
