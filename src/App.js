@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect , useState} from 'react'
 import { getPosts } from './network'
 import Post from './components/Post'
+import PostsPage from './layouts/PostPage'
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -16,12 +17,15 @@ function App() {
   
   return (
     <div>
-    {
-      posts.map(post => (
-        <Post key={post.id} post={post}></Post>
-      ))
-    }
+    <PostsPage></PostsPage>
     </div>
+    // <div>
+    // {
+    //   posts.map(post => (
+    //     <Post key={post.id} post={post}></Post>
+    //   ))
+    // }
+    // </div>
   );
 }
 
