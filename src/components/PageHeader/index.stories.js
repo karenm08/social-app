@@ -12,7 +12,7 @@ const events = actions({ titleClicked: "title clicked", signOut: 'sign out', new
 
 export const LoggedIn = () => (
   <PageHeader 
-  title="Social Something"
+  title="SocialLOL"
   {...events}
   user={true}
   ></PageHeader>
@@ -20,7 +20,7 @@ export const LoggedIn = () => (
 
 export const LoggedOut = () => (
   <PageHeader 
-  title="Social Something"
+  title="SocialLOL"
   {...events}
   ></PageHeader>
 )

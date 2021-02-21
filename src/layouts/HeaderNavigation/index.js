@@ -6,7 +6,7 @@ export default function HeaderNavigation() {
   const history = useHistory()
 
   return (<PageHeader
-    title="Social Something"
+    title="SocialLOL"
     titleClicked={() => history.push("/")}
     user={{_id: "1"}}
     newPost={() => history.push("/newPost")}
