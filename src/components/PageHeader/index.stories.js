@@ -1,31 +1,26 @@
 import React from 'react'
-import LoginPage from './index'
-import LogoutPage from './loggedOut'
 import { actions } from '@storybook/addon-actions'
 
+import PageHeader from './index'
+
 export default {
-    title: 'PageHeader',
-    component: LoginPage,
-    component: LogoutPage,
-  }
+  title: 'Page Header',
+  component: PageHeader,
+}
 
-  const events = actions({ onSearch: 'search clicked',
-  onSubmit: 'submit clicked',
-  onTitleClicked: 'title clicked',
-  onSignOutClicked: 'sign out clicked',
-  onNewPostClicked: 'new post clicked',
-  onProfileClicked: 'profile clicked',
-  onLoginClicked: 'login clicked'})
+const events = actions({ titleClicked: "title clicked", signOut: 'sign out', newPost: "new post", profile: "profile", onSearch: "search", login: "login"})
 
-  export const LoggedIn = () => <LoginPage {...events}/>
-  export const LoggedOut = () => <LogoutPage {...events}/>
+export const LoggedIn = () => (
+  <PageHeader 
+  title="Social Something"
+  {...events}
+  user={true}
+  ></PageHeader>
+)
 
-// //   <PageHeader 
-// onTitleClicked={funciton} 
-// onSignOutClicked={function}
-// onNewPostClicked={function}
-// onProfileClicked={function}
-// onSearch={function}
-// onLoginClicked={function}
-// user={the logged in user object}
-// // ></PageHeader>
+export const LoggedOut = () => (
+  <PageHeader 
+  title="Social Something"
+  {...events}
+  ></PageHeader>
+)
