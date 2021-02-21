@@ -8,6 +8,7 @@ import {
 import PostsPage from './layouts/PostPage'
 import PostDetailsPage from './layouts/PostDetailsPage'
 import HeaderNavigation from './layouts/HeaderNavigation'
+import NewPostPage from './layouts/NewPostPage'
 
 export default function App() {
   return (
@@ -22,7 +23,8 @@ export default function App() {
           <p>Profile Page</p>
         </Route>
         <Route path="/newPost">
-          <p>Create New Post Page</p>
+          <NewPostPage></NewPostPage>
+          {/* <p>Create New Post Page</p> */}
         </Route>
         <Route path="/posts/:postId">
           <PostDetailsPage></PostDetailsPage>
