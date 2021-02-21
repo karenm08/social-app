@@ -60,9 +60,9 @@ export default function Post({className, post, submitComment, likeClicked}) {
         />
         <CardContent className={classes.comments}>
           
-          {post.comments.map(comment => (
-            <UserComment key={comment.id} className={classes.comment} comment={comment}></UserComment>
-          ))}
+          {/* {post.comments.map(comment => (
+            <UserComment key={comment._id} className={classes.comment} comment={comment}></UserComment>
+          ))} */}
 
         </CardContent>
         <div>

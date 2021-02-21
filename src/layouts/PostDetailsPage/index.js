@@ -8,7 +8,7 @@ export default function PostDetailsPage() {
   useEffect(() => {
     (async () => {
         // Hard code one of your post ids for now, we'll make this dynamic later
-        const result = await getPost({postId: "602346410afb530705e05e1f"})
+        const result = await getPost({postId: "postId002"})
         setPost(result.post)
     })()
   }, [])
