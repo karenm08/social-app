@@ -62,9 +62,9 @@ export default function NewPost({ imgUpload, onSubmit, fileUpload , onClose }) {
     setTabValue(newValue);
   };
 
-  const [descripition, setFileUploadDes] = useState('')
+  const [description, setFileUploadDes] = useState('')
   const [imageURL, setImageURL] = useState('')
-  const [imgDescripition, setImageURLDes] = useState('')
+  const [imgDescription, setImageURLDes] = useState('')
 
   return (
     <Card className={classes.root}>
@@ -92,7 +92,8 @@ export default function NewPost({ imgUpload, onSubmit, fileUpload , onClose }) {
             <FormControl fullWidth={true}>
                 <Input onChange={event => setImageURL(event.target.value)} className={classes.input} placeholder="Image URL"></Input>
                 <Input onChange={event => setImageURLDes(event.target.value)} className={classes.input} placeholder="Description"></Input>
-                <Button className={classes.postButton} value="post" onClick={() => onSubmit({descripition: imgDescripition, imageURL:imageURL,type:imgUpload.type})}>POST</Button>
+                <Button className={classes.postButton} value="post" onClick={() => onSubmit({description: imgDescription, imageUrl:imageURL,type:imgUpload.type})}>POST</Button>
+                {/* <Button className={classes.postButton} value="post" onClick={() => onSubmit({description: imgDescription, imageURL:IMGimageURL})}>POST</Button> */}
             </FormControl>
           </Typography>
         ) : (
@@ -100,7 +101,8 @@ export default function NewPost({ imgUpload, onSubmit, fileUpload , onClose }) {
            <Button className={classes.cameraButton}><CameraAltIcon></CameraAltIcon></Button> 
                 <FormControl fullWidth={true}>
                     <Input onChange={event => setFileUploadDes(event.target.value)} className={classes.input} placeholder="Image URL"></Input>
-                    <Button className={classes.postButton} value="post" onClick={() => onSubmit({descripition: descripition, file:fileUpload.file, type:fileUpload.type})}>POST</Button>
+                    <Button className={classes.postButton} value="post" onClick={() => onSubmit({description: description, file:fileUpload.file, type:fileUpload.type})}>POST</Button>
+                    {/* <Button className={classes.postButton} value="post" onClick={() => onSubmit({description: description, file:fileUpload.file})}>POST</Button> */}
                 </FormControl>
           </Typography>
         )}
