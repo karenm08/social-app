@@ -12,7 +12,7 @@ export default {
 }
 
 export const WithComments = () => (
-  <PostDetails {...events} post={data[0]} />
+  <PostDetails {...events} post={data[0]}/>
 )
 
 

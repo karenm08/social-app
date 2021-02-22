@@ -11,6 +11,7 @@ export default function PostsPage() {
     (async () => {
       const result = await getPosts()
       setPosts(result.posts)
+      console.log(result)
     })()
   }, [])
 

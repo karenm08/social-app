@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   }
 })
 
-export default function Post({className, post, submitComment, likeClicked}) {
+export default function Post({className, post, submitComment, likeClicked , comment}) {
   const classes = useStyles()
 
   const onComment = data => {
@@ -60,8 +60,16 @@ export default function Post({className, post, submitComment, likeClicked}) {
         />
         <CardContent className={classes.comments}>
           
-          {/* {post.comments.map(comment => (
+          {/* {comment.map(comment => (
             <UserComment key={comment._id} className={classes.comment} comment={comment}></UserComment>
+          ))} */}
+
+            {/* <UserComment key={comment._id} className={classes.comment} comment={comment}></UserComment> */}
+          
+          
+
+          {/* {post.comments.map(comment => (
+            <UserComment key={comment.id} className={classes.comment} comment={comment}></UserComment>
           ))} */}
 
         </CardContent>
