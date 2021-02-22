@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { getPost,getPostComments } from '../../network'
 import { makeStyles } from '@material-ui/core/styles'
 import { Avatar, CardHeader, IconButton, Typography, Card, CardActionArea, CardActions, CardContent, CardMedia } from '@material-ui/core'
 import { Favorite, FavoriteBorder } from '@material-ui/icons'
+import { useParams } from "react-router-dom"
 
 import CommentForm from '../CommentForm'
 import UserComment from '../UserComment'
@@ -34,8 +36,17 @@ const useStyles = makeStyles({
   }
 })
 
-export default function Post({className, post, submitComment, likeClicked , comment}) {
+export default function Post({className, post, submitComment, likeClicked}) {
   const classes = useStyles()
+  const [comment, setComment] = useState([])
+  let { postId } = useParams()
+
+  useEffect(() => {
+    (async () => {
+        const commentResult = await getPostComments({postId: postId})
+        setComment(commentResult.comments)
+    })()
+  }, [])
 
   const onComment = data => {
     submitComment({postId: post._id, text: data.comment})
@@ -58,15 +69,12 @@ export default function Post({className, post, submitComment, likeClicked , comm
           }
           title={post.user.username}
         />
-        <CardContent className={classes.comments}>
-          
-          {/* {comment.comments.map(comment => (
-            <UserComment key={comment._id} className={classes.comment} comment={comment.commentResult.comments[0]}></UserComment>
-          ))} */}
-{/* 
-                    {post.comments.map(comment => (
-            <UserComment key={comment._id} className={classes.comment} comment={comment}></UserComment>
-          ))} */}
+        <CardContent>
+        {console.log(comment)}
+
+          {comment.map(c => (
+            <UserComment key={c._id} className={classes.comment} comment={c}></UserComment>
+          ))}
 
         </CardContent>
         <div>
