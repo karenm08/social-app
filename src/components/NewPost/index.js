@@ -100,7 +100,7 @@ export default function NewPost({ imgUpload, onSubmit, fileUpload , onClose }) {
           <Typography>
            <Button className={classes.cameraButton}><CameraAltIcon></CameraAltIcon></Button> 
                 <FormControl fullWidth={true}>
-                    <Input onChange={event => setFileUploadDes(event.target.value)} className={classes.input} placeholder="Image URL"></Input>
+                    <Input onChange={event => setFileUploadDes(event.target.value)} className={classes.input} placeholder="Description"></Input>
                     <Button className={classes.postButton} value="post" onClick={() => onSubmit({description: description, file:"", type: "url"})}>POST</Button>
                     {/* <Button className={classes.postButton} value="post" onClick={() => onSubmit({description: description, file:fileUpload.file})}>POST</Button> */}
                 </FormControl>

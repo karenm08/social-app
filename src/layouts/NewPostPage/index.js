@@ -13,6 +13,7 @@ export default function HeaderNavigation() {
           },
           // format the data
           body: JSON.stringify({
+            // description: "dd",
             description: data.description,
             imageUrl: data.imageUrl,
             type: "jpg",
