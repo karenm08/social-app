@@ -12,3 +12,21 @@ export async function getPosts() {
     // We can handle this later though
   }
 }
+
+export async function getPost({postId}) {
+  try {
+    const result = await axios.get(`/api/posts/${postId}`)
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getPostComments({postId}) {
+  try {
+    const result = await axios.get(`/api/posts/${postId}/comments`)
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}

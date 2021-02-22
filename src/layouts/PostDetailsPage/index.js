@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import PostDetails from '../../components/PostDetails'
-import { getPost } from '../../network2'
+import { getPost } from '../../network'
 import { useParams } from "react-router-dom"
 
 export default function PostDetailsPage() {
