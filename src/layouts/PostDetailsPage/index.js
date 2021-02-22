@@ -17,11 +17,11 @@ export default function PostDetailsPage() {
         setPost(result.post)
         setComment(commentResult.comments)
 
-        console.log(result.post)
-        console.log(commentResult)
-        console.log(commentResult.comments)
-        console.log(commentResult.comments[0].user.username)
-        console.log(commentResult.comments[0].text)
+        // console.log(result.post)
+        // console.log(commentResult)
+        // console.log(commentResult.comments)
+        // console.log(commentResult.comments[0].user.username)
+        // console.log(commentResult.comments[0].text)
 
     })()
   }, [])
