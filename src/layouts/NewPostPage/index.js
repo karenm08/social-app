@@ -1,6 +1,6 @@
 import NewPost from '../../components/NewPost'
 import React, {useState, useEffect} from 'react'
-export default function HeaderNavigation() {
+export default function NewPostPage() {
 
   const onSubmit = async data => {
     try {

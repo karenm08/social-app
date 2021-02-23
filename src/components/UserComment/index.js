@@ -26,8 +26,8 @@ export default function Comment({comment, className}) {
     <div className={clsx(classes.root, className)}>
       <Avatar className={classes.avatar}>{comment?.user?.username[0]}</Avatar>
       <Typography className={classes.text} variant="body2" color="textPrimary" component="p">
-        <b>{comment?.user?.username}</b> 
-        {comment?.text}
+      <b>{comment?.user?.username}</b>  {'\u00A0'}
+      {comment?.text}
       </Typography>
     </div>
   )

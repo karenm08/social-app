@@ -12,5 +12,6 @@ export default function HeaderNavigation() {
     newPost={() => history.push("/newPost")}
     profile={() => history.push("/profile")}
     login={() => history.push("/login")}
+    signOut={() => history.push("/signOut")}
     ></PageHeader>)
 }

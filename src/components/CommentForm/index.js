@@ -31,7 +31,6 @@ export default function NewPost({onSubmit}) {
 
   return (
       <form onSubmit={submit} className={classes.form}>
-      
         <TextField className={classes.textField} 
         value={comment} 
         multiline 

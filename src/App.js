@@ -9,6 +9,7 @@ import PostsPage from './layouts/PostPage'
 import PostDetailsPage from './layouts/PostDetailsPage'
 import HeaderNavigation from './layouts/HeaderNavigation'
 import NewPostPage from './layouts/NewPostPage'
+import Login from './layouts/LoginPage'
 
 export default function App() {
   return (
@@ -19,12 +20,14 @@ export default function App() {
         <Route path="/login">
           <p>Login Form</p>
         </Route>
+        <Route path="/signOut">
+        <p>Login Form</p>
+        </Route>
         <Route path="/profile">
           <p>Profile Page</p>
         </Route>
         <Route path="/newPost">
           <NewPostPage></NewPostPage>
-          {/* <p>Create New Post Page</p> */}
         </Route>
         <Route path="/posts/:postId">
           <PostDetailsPage></PostDetailsPage>
