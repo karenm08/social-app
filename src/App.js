@@ -21,7 +21,7 @@ export default function App() {
           <p>Login Form</p>
         </Route>
         <Route path="/signOut">
-        <p>Login Form</p>
+        <Login/>
         </Route>
         <Route path="/profile">
           <p>Profile Page</p>
