@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+//--------------------------get all Posts--------------------------------------------//
 export async function getPosts() {
   try {
     const result = await axios.get(`api/posts`)
@@ -13,6 +14,7 @@ export async function getPosts() {
   }
 }
 
+//--------------------------get one Post by id--------------------------------------------//
 export async function getPost({postId}) {
   try {
     const result = await axios.get(`/api/posts/${postId}`)
@@ -22,6 +24,7 @@ export async function getPost({postId}) {
   }
 }
 
+//--------------------------get post commments--------------------------------------------//
 export async function getPostComments({postId}) {
   try {
     const result = await axios.get(`/api/posts/${postId}/comments`)
@@ -31,6 +34,7 @@ export async function getPostComments({postId}) {
   }
 }
 
+//--------------------------save Submit SignUp--------------------------------------------//
 export const onSubmitSignUp = async data => {
   try {
     // Create request to api service
@@ -55,6 +59,7 @@ export const onSubmitSignUp = async data => {
     }
 }
 
+//--------------------------save Submit Login--------------------------------------------//
 export const onSubmitLogin = async data => {
   try {
     // Create request to api service
@@ -79,7 +84,25 @@ export const onSubmitLogin = async data => {
     }
 }
 
-
-// export async function login({username, password})
-// export async function signUp({email, password, username}){}
-// export async function savePost({type, imageUrl, description})
+//--------------------------save Submit Comment--------------------------------------------//
+export const submitComment = async (data) => {
+  try {
+    // Create request to api service
+    const req = await fetch(`/api/posts/${data.postId}/comments`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        // format the data
+        body: JSON.stringify({
+          text: data.text
+      }),
+    });
+    const res = await req.json();
+    // Log success message
+    console.log(res);                
+    } catch(err) {
+    console.error(`ERROR: ${err}`);
+    }
+}

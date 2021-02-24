@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import PostDetails from '../../components/PostDetails'
-import { getPost,getPostComments } from '../../network'
+import { getPost,submitComment } from '../../network'
 import { useParams } from "react-router-dom"
 
 export default function PostDetailsPage() {
@@ -15,27 +15,27 @@ export default function PostDetailsPage() {
     })()
   }, [])
 
-  const submitComment = async data => {
-    try {
-      // Create request to api service
-      const req = await fetch(`/api/posts/${postId}/comments`, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          // format the data
-          body: JSON.stringify({
-            text: data.text
-        }),
-      });
-      const res = await req.json();
-      // Log success message
-      console.log(res);                
-      } catch(err) {
-      console.error(`ERROR: ${err}`);
-      }
-  }
+  // const submitComment = async data => {
+  //   try {
+  //     // Create request to api service
+  //     const req = await fetch(`/api/posts/${postId}/comments`, {
+  //         method: 'POST',
+  //         headers: {
+  //           'Accept': 'application/json',
+  //           'Content-Type': 'application/json'
+  //         },
+  //         // format the data
+  //         body: JSON.stringify({
+  //           text: data.text
+  //       }),
+  //     });
+  //     const res = await req.json();
+  //     // Log success message
+  //     console.log(res);                
+  //     } catch(err) {
+  //     console.error(`ERROR: ${err}`);
+  //     }
+  // }
 
   const likeClicked = async data => {
     console.log("Like Clicked", data)
