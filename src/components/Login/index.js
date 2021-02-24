@@ -48,7 +48,7 @@ closeButton:{
 },
 }));
 
-export default function NewPost({ onSubmit, onClose , signUp , login }) {
+export default function NewPost({ onSubmitLogin, onClose , signUp , login, onSubmitSignUp}) {
   const classes = useStyles();
 
   const [tabValue, setTabValue] = useState(0);
@@ -87,7 +87,7 @@ export default function NewPost({ onSubmit, onClose , signUp , login }) {
             <FormControl fullWidth={true}>
                 <Input onChange={event => setUseName(event.target.value)} className={classes.input} placeholder="Username"></Input>
                 <Input onChange={event => setPassword(event.target.value)} className={classes.input} type="password" placeholder="Password" />
-                <Button component={Link} to={'/'} className={classes.postButton} value="submit" onClick={() => onSubmit({username: usename, password:password,type:"login"})}>SUMBIT</Button>
+                <Button component={Link} exact to={'/'} className={classes.postButton} value="submit" onClick={() => onSubmitLogin({username: usename, password:password,type:"login"})}>SUMBIT</Button>
             </FormControl>
           </Typography>
         ) : (
@@ -96,7 +96,7 @@ export default function NewPost({ onSubmit, onClose , signUp , login }) {
                   <Input onChange={event => setEmail(event.target.value)} className={classes.input} placeholder="Email" type="email"></Input>
                   <Input onChange={event => setUseName(event.target.value)} className={classes.input} placeholder="Username"></Input>
                   <Input onChange={event => setPassword(event.target.value)} className={classes.input} type="password" placeholder="Password" />
-                    <Button component={Link} to={'/'} onClick={() => onSubmit({email: email, username: usename, password:password,type: "signUp"})} className={classes.postButton} value="post">SUMBIT</Button>
+                    <Button component={Link} exact to={'/'} onClick={() => onSubmitSignUp({email: email, username: usename, password:password,type: "signUp"})} className={classes.postButton} value="post">SUMBIT</Button>
                 </FormControl>
           </Typography>
         )}
