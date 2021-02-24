@@ -15,10 +15,6 @@ export default function PostDetailsPage() {
     })()
   }, [])
 
-  // const submitComment = async data => {
-  //   console.log("submit comment", data)
-  // }
-
   const submitComment = async data => {
     try {
       // Create request to api service
