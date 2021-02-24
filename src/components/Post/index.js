@@ -53,13 +53,12 @@ export default function Post({post, cardClicked, commentClicked, likeClicked}) {
 </CardActionArea>
 
 <CardActions>
-  <IconButton aria-label="like" className={classes.margin} onClick={ () => {likesCount();handleLike(); likeClicked({liked: !likedPost})}}> {likedPost ? <Favorite fontSize="large" /> : <FavoriteBorder fontSize="large" /> }
+  <IconButton aria-label="like" className={classes.margin} onClick={ () => {likesCount();handleLike(); likeClicked({liked:! likedPost})}}> {likedPost ? <Favorite fontSize="large" /> : <FavoriteBorder fontSize="large" /> }
   </IconButton>
   <IconButton aria-label="comment" onClick={() => commentClicked({postId: post._id})}>
     <Comment fontSize="large" />
   </IconButton>
 </CardActions>
-
 </Card>
   )
 }

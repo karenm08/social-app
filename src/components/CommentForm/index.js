@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function NewPost({onSubmit}) {
+export default function NewPost({onSubmit,setRerender}) {
   const classes = useStyles()
 
   const [comment, setComment] = useState("")
@@ -26,6 +26,7 @@ export default function NewPost({onSubmit}) {
   const submit = event => {
     event.preventDefault()
     onSubmit({comment})
+    setRerender(prev => !prev)
     setComment("")
   }
 
@@ -43,6 +44,5 @@ export default function NewPost({onSubmit}) {
         type="submit" 
         ><SendIcon /></IconButton></div>
       </form>
-
   )
 }

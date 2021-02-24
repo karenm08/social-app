@@ -32,20 +32,28 @@ const useStyles = makeStyles({
     margin: "10px 0"
   },
   comments: {
-    overflowY: "scroll"
+    overflow: "scroll"
   }
 })
 
 export default function Post({className, post, submitComment, likeClicked}) {
+  let { postId } = useParams()
   const classes = useStyles()
   const [comment, setComment] = useState([])
-  let { postId } = useParams()
+  const [rerender, setRerender] = useState(false)
 
   const [likedPost,setLike] = useState(false)
   const [likedCount,setLikeCount] = useState(0)
 
   const handleLike = () => { setLike(current => !current)}
   const likesCount = () => { likedPost ? setLikeCount(likedCount - 1) : setLikeCount(likedCount + 1) }
+
+  useEffect(() => {
+    (async () => {
+        const commentResult = await getPostComments({postId: postId})
+        setComment(commentResult.comments)
+    })()
+  }, [rerender])
 
   useEffect(() => {
     (async () => {
@@ -75,7 +83,7 @@ export default function Post({className, post, submitComment, likeClicked}) {
           }
           title={post.user.username}
         />
-        <CardContent>
+        <CardContent className={classes.comments}>
           {comment.map(c => (
             <UserComment key={c._id} className={classes.comment} comment={c}></UserComment>
           ))}
@@ -92,7 +100,7 @@ export default function Post({className, post, submitComment, likeClicked}) {
           <b>{comment.length}</b> comments
         </Typography>
       </CardActions>
-      <CommentForm className={classes.commentForm} onSubmit={onComment}></CommentForm>
+      <CommentForm className={classes.commentForm} setRerender={setRerender} onSubmit={onComment}></CommentForm>
       </div>
       </div>
     </Card>
