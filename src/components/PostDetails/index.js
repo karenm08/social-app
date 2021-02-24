@@ -41,11 +41,11 @@ export default function Post({className, post, submitComment, likeClicked}) {
   const [comment, setComment] = useState([])
   let { postId } = useParams()
 
-  const [liked,setLike] = useState(false)
+  const [likedPost,setLike] = useState(false)
   const [likedCount,setLikeCount] = useState(0)
 
-  const handleClick = () => { setLike(current => !current)}
-  const likesCount = () => { liked ? setLikeCount(likedCount - 1) : setLikeCount(likedCount + 1) }
+  const handleLike = () => { setLike(current => !current)}
+  const likesCount = () => { likedPost ? setLikeCount(likedCount - 1) : setLikeCount(likedCount + 1) }
 
   useEffect(() => {
     (async () => {
@@ -82,8 +82,8 @@ export default function Post({className, post, submitComment, likeClicked}) {
         </CardContent>
         <div>
         <CardActions>
-        <IconButton aria-label="like" className={classes.margin} onClick={ () => {likesCount();handleClick()}}>
-          {liked ? <Favorite fontSize="large" /> : <FavoriteBorder fontSize="large" /> }
+        <IconButton aria-label="like" className={classes.margin} onClick={ () => {likesCount();handleLike(); likeClicked({liked: !likedPost})}}>
+          {likedPost ? <Favorite fontSize="large" /> : <FavoriteBorder fontSize="large" /> }
         </IconButton>
         <Typography variant="body2" color="textPrimary" component="p">
           Liked by <b>{likedCount}</b> people
@@ -95,7 +95,6 @@ export default function Post({className, post, submitComment, likeClicked}) {
       <CommentForm className={classes.commentForm} onSubmit={onComment}></CommentForm>
       </div>
       </div>
-      
     </Card>
   )
 }

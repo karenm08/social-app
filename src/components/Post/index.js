@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Comment, Favorite, FavoriteBorder } from '@material-ui/icons'
 import { Avatar, CardHeader, IconButton, Typography, Card, CardActionArea, CardActions, CardContent, CardMedia } from '@material-ui/core'
@@ -13,6 +13,11 @@ const useStyles = makeStyles({
   })
 
 export default function Post({post, cardClicked, commentClicked, likeClicked}) {
+  const [likedPost,setLike] = useState(false)
+  const [likedCount,setLikeCount] = useState(0)
+
+  const handleLike = () => { setLike(current => !current)}
+  const likesCount = () => { likedPost ? setLikeCount(likedCount - 1) : setLikeCount(likedCount + 1) }
     const classes = useStyles()
   return (
 <Card className={classes.root}>
@@ -39,7 +44,7 @@ export default function Post({post, cardClicked, commentClicked, likeClicked}) {
   </CardContent>
   <CardContent>
     <Typography variant="body2" color="textPrimary" component="p">
-      Liked by <strong>{post.totalLikes}</strong> people
+      Liked by <strong>{likedCount}</strong> people
     </Typography>
     <Typography variant="body2" color="textPrimary" component="p">
       <strong>{post.totalComments}</strong> comments
@@ -48,9 +53,8 @@ export default function Post({post, cardClicked, commentClicked, likeClicked}) {
 </CardActionArea>
 
 <CardActions>
-  <IconButton aria-label="like" onClick={() => likeClicked({postId: post._id})}>
-  {post.liked ? <Favorite fontSize="large" /> : <FavoriteBorder fontSize="large" /> }
-</IconButton>
+  <IconButton aria-label="like" className={classes.margin} onClick={ () => {likesCount();handleLike(); likeClicked({liked: !likedPost})}}> {likedPost ? <Favorite fontSize="large" /> : <FavoriteBorder fontSize="large" /> }
+  </IconButton>
   <IconButton aria-label="comment" onClick={() => commentClicked({postId: post._id})}>
     <Comment fontSize="large" />
   </IconButton>
