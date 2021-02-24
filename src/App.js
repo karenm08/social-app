@@ -18,7 +18,7 @@ export default function App() {
       <main style={{marginTop: 100}}></main>
       <Switch>
         <Route path="/login">
-          <p>Login Form</p>
+          <Login></Login>
         </Route>
         <Route path="/signOut">
         <Login/>

@@ -84,6 +84,7 @@ export default function PageHeader(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [search, setSearch] = useState("")
+  const [loginOrNot, setLoginOrNot] = useState(true)
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -94,6 +95,7 @@ export default function PageHeader(props) {
   }
 
   const signOut = () => {
+    setLoginOrNot(loginOrNot)
     handleClose()
     props.signOut()
   }
