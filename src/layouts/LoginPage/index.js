@@ -43,6 +43,7 @@ export default function LoginPage() {
       });
       const res = await req.json();
       // Log success message - authenticated: true
+      res.authenticated ? window.alert("successfully login!") : window.alert("invaild login")
       console.log(res.authenticated);                
       } catch(err) {
       console.error(`ERROR: ${err}`);
