@@ -4,6 +4,11 @@ import { useHistory } from "react-router-dom"
 
 export default function HeaderNavigation({user, setToken}) {
   const history = useHistory()
+  const signOut = () => {
+    // Remove the token from local storage
+    setToken("")
+    history.push("/")
+  }
 
   return (<PageHeader
     title="SocialLOL"
@@ -13,6 +18,7 @@ export default function HeaderNavigation({user, setToken}) {
     newPost={() => history.push("/newPost")}
     profile={() => history.push("/profile")}
     login={() => history.push("/login")}
-    signOut={() => history.push("/signOut")}
+    signOut={signOut}
+    // signOut={() => history.push("/signOut")}
     ></PageHeader>)
 }

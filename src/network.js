@@ -52,8 +52,9 @@ export const onSubmitSignUp = async data => {
       }),
     });
     const res = await req.json();
-    // Log success message
-    console.log(res);                
+    res.accessToken ? window.alert("Successfully sign up!") : window.alert("Failed to sign up") 
+    console.log(res);  
+    return res         
     } catch(err) {
     console.error(`ERROR: ${err}`);
     }
@@ -77,8 +78,9 @@ export const onSubmitLogin = async data => {
     });
     const res = await req.json();
     // Log success message - authenticated: true
-    res.authenticated ? window.alert("successfully login!") : window.alert("invaild login")
-    console.log(res.authenticated);                
+    res.accessToken ? window.alert("successfully login!") : window.alert("invaild login")
+    console.log(res);
+    return res                
     } catch(err) {
     console.error(`ERROR: ${err}`);
     }
