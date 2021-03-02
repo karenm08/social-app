@@ -36,7 +36,8 @@ export default function App() {
         <Login/>
         </Route>
         <Route path="/profile">
-          <p>{user?.username}</p>
+          <p>ID: {user?._id}</p>
+          <p>User Name: {user?.username}</p>
         </Route>
         <Route path="/newPost">
           <NewPostPage></NewPostPage>

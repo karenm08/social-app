@@ -57,9 +57,18 @@ export default function NewPost({ onSubmitLogin, onClose , signUp , login, onSub
     setTabValue(newValue);
   };
 
-  const [usename, setUseName] = useState('')
+  const [username, setUseName] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
+
+  const submit = event => {
+    event.preventDefault()
+    if (tabValue === 0) {
+      onSubmitLogin({type: "login", username, password})
+    } else {
+      onSubmitLogin({type: "signUp", email, username, password})
+    }
+  }
  
   return (
     <Card className={classes.root}>
@@ -82,24 +91,27 @@ export default function NewPost({ onSubmitLogin, onClose , signUp , login, onSub
         </Tabs>
       </CardContent>
       <CardContent>
-        {tabValue === 0 ? (
-          <Typography>
-            <FormControl fullWidth={true}>
-                <Input onChange={event => setUseName(event.target.value)} className={classes.input} placeholder="Username"></Input>
-                <Input onChange={event => setPassword(event.target.value)} className={classes.input} type="password" placeholder="Password" />
-                <Button component={Link} exact to={'/'} className={classes.postButton} value="submit" onClick={() => onSubmitLogin({username: usename, password:password,type:"login"})}>SUMBIT</Button>
-            </FormControl>
-          </Typography>
-        ) : (
-          <Typography> 
-                <FormControl fullWidth={true}>
-                  <Input onChange={event => setEmail(event.target.value)} className={classes.input} placeholder="Email" type="email"></Input>
+      <form onSubmit={submit}>
+          {tabValue === 0 ? (
+            <Typography>
+              <FormControl fullWidth={true}>
                   <Input onChange={event => setUseName(event.target.value)} className={classes.input} placeholder="Username"></Input>
                   <Input onChange={event => setPassword(event.target.value)} className={classes.input} type="password" placeholder="Password" />
-                    <Button component={Link} exact to={'/'} onClick={() => onSubmitSignUp({email: email, username: usename, password:password,type: "signUp"})} className={classes.postButton} value="post">SUMBIT</Button>
-                </FormControl>
-          </Typography>
-        )}
+                  <Button type="submit" className={classes.postButton}>SUMBIT</Button>
+              </FormControl>
+            </Typography>
+          ) : (
+            <Typography> 
+                  <FormControl fullWidth={true}>
+                    <Input onChange={event => setEmail(event.target.value)} className={classes.input} placeholder="Email" type="email"></Input>
+                    <Input onChange={event => setUseName(event.target.value)} className={classes.input} placeholder="Username"></Input>
+                    <Input onChange={event => setPassword(event.target.value)} className={classes.input} type="password" placeholder="Password" />
+                    <Button type="submit" className={classes.postButton}>SUMBIT</Button>
+                      {/* <Button component={Link} exact to={'/'} onClick={() => onSubmitSignUp({email: email, username: username, password:password,type: "signUp"})} className={classes.postButton} value="post">SUMBIT</Button> */}
+                  </FormControl>
+            </Typography>
+          )}
+        </form>
       </CardContent>
     </Card>
   );
