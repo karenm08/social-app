@@ -108,3 +108,32 @@ export const submitComment = async (data) => {
     console.error(`ERROR: ${err}`);
     }
 }
+
+//-------------------------- Submit Post--------------------------------------------//
+// Get the token from local storage
+const token = localStorage.getItem('token')
+
+export const onSubmitPost = async data => {
+  try {
+    // Create request to api service
+    const req = await fetch('/api/posts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        // format the data
+        body: JSON.stringify({
+          description: data.description,
+          imageUrl: data.imageUrl,
+          type: "jpg",
+      }),
+    });
+    const res = await req.json();
+    // Log success message
+    console.log(res);                
+    } catch(err) {
+    console.error(`ERROR: ${err}`);
+    }
+}
