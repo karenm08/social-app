@@ -1,58 +1,26 @@
 import Login from '../../components/Login'
 import { onSubmitSignUp } from '../../network'
 import { onSubmitLogin } from '../../network'
+import { useHistory } from "react-router-dom"
 
-export default function LoginPage() {
+export default function LoginPage({setToken}) {
+  const history = useHistory()
 
-  //---------------------------Sign Up----------------------------------------------------//
-  // const onSubmitSignUp = async data => {
-  //   try {
-  //     // Create request to api service
-  //     const req = await fetch('/api/users', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Accept': 'application/json',
-  //           'Content-Type': 'application/json'
-  //         },
-  //         // format the data
-  //         body: JSON.stringify({
-  //           email: data.email,
-  //           username: data.username,
-  //           password: data.password,
-  //       }),
-  //     });
-  //     const res = await req.json();
-  //     // Log success message
-  //     console.log(res);                
-  //     } catch(err) {
-  //     console.error(`ERROR: ${err}`);
-  //     }
-  // }
+  async function login(details) {
+    let result 
+    console.log(details);
+    if (details.type === "login") {
+      result = await onSubmitLogin(details)
+    }
+    if (details.type === "signUp") {
+      result = await onSubmitSignUp(details)
+    }
+    console.log(result);
+    // Store the JWT into local storage
+    setToken(result.accessToken)
+    history.push("/")
+  }
 
-  //---------------------------Login----------------------------------------------------//
-  // const onSubmitLogin = async data => {
-  //   try {
-  //     // Create request to api service
-  //     const req = await fetch('/api/users/login', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Accept': 'application/json',
-  //           'Content-Type': 'application/json'
-  //         },
-  //         // format the data
-  //         body: JSON.stringify({
-  //           username: data.username,
-  //           password: data.password,
-  //       })
-  //     });
-  //     const res = await req.json();
-  //     // Log success message - authenticated: true
-  //     res.authenticated ? window.alert("successfully login!") : window.alert("invaild login")
-  //     console.log(res.authenticated);                
-  //     } catch(err) {
-  //     console.error(`ERROR: ${err}`);
-  //     }
-  // }
   
   const onClose = async data => {
       console.log("close Clicked", data)
@@ -60,7 +28,7 @@ export default function LoginPage() {
 
   return <Login 
           onClose={onClose} 
-          onSubmitLogin={onSubmitLogin}
+          onSubmitLogin={onSubmitLogin,login}
           onSubmitSignUp ={onSubmitSignUp}
           />
 }
