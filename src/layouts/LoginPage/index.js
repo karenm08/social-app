@@ -8,14 +8,12 @@ export default function LoginPage({setToken}) {
 
   async function login(details) {
     let result 
-    console.log(details);
     if (details.type === "login") {
       result = await onSubmitLogin(details)
     }
     if (details.type === "signUp") {
       result = await onSubmitSignUp(details)
     }
-    console.log(result);
     // Store the JWT into local storage
     setToken(result.accessToken)
     history.push("/")
