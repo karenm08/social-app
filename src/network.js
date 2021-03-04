@@ -64,7 +64,7 @@ export const onSubmitSignUp = async data => {
 export const onSubmitLogin = async data => {
   try {
     // Create request to api service
-    const req = await fetch('/api/users/login', {
+    const res = await fetch('/api/users/login', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -76,14 +76,13 @@ export const onSubmitLogin = async data => {
           password: data.password,
       })
     });
-    const res = await req.json();
+    const result = await res.json();
     // Log success message - authenticated: true
-    res.accessToken ? window.alert("successfully login!") : window.alert("invaild login")
-    console.log(res);
-    return res                
-    } catch(err) {
-    console.error(`ERROR: ${err}`);
-    }
+    result.accessToken ? window.alert("successfully login!") : window.alert("invaild login")
+    return result              
+  } catch(err) {
+    console.error(`ERROR: ${err.message}`);
+  }
 }
 
 //--------------------------save Submit Comment--------------------------------------------//
@@ -94,7 +93,8 @@ export const submitComment = async (data) => {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         // format the data
         body: JSON.stringify({

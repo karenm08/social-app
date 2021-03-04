@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import Login from '../../components/Login'
 import { onSubmitSignUp } from '../../network'
 import { onSubmitLogin } from '../../network'
@@ -14,9 +15,12 @@ export default function LoginPage({setToken}) {
     if (details.type === "signUp") {
       result = await onSubmitSignUp(details)
     }
+
     // Store the JWT into local storage
-    setToken(result.accessToken)
-    history.push("/")
+    if(result.accessToken){
+      setToken(result.accessToken)
+      history.push("/")
+    }
   }
 
   
@@ -26,7 +30,7 @@ export default function LoginPage({setToken}) {
 
   return <Login 
           onClose={onClose} 
-          onSubmitLogin={onSubmitLogin,login}
+          login={login}
           onSubmitSignUp ={onSubmitSignUp}
           />
 }

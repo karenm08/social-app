@@ -48,7 +48,7 @@ closeButton:{
 },
 }));
 
-export default function NewPost({ onSubmitLogin, onClose , signUp , login, onSubmitSignUp}) {
+export default function NewPost({ onClose , login}) {
   const classes = useStyles();
 
   const [tabValue, setTabValue] = useState(0);
@@ -63,10 +63,12 @@ export default function NewPost({ onSubmitLogin, onClose , signUp , login, onSub
 
   const submit = event => {
     event.preventDefault()
+    let result;
+
     if (tabValue === 0) {
-      onSubmitLogin({type: "login", username, password})
+      login({type: "login", username, password})
     } else {
-      onSubmitLogin({type: "signUp", email, username, password})
+      login({type: "signUp", email, username, password})
     }
   }
  

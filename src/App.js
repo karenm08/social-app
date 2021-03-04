@@ -17,7 +17,7 @@ import useLocalStorage from "react-use-localstorage";
 
 export default function App() {
   const [user, setUser] = useState();
-  const [token, setToken] = useLocalStorage("token");
+  const [token, setToken] = useLocalStorage("token", "");
 
   useEffect(() => {
     const user = token ? jwtDecode(token) : null;

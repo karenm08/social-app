@@ -7,6 +7,7 @@ export default function HeaderNavigation({user, setToken}) {
   const signOut = () => {
     // Remove the token from local storage
     setToken("")
+    localStorage.removeItem('token')
     history.push("/")
   }
 
