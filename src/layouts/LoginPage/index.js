@@ -15,7 +15,7 @@ export default function LoginPage({setToken}) {
     if (details.type === "signUp") {
       result = await onSubmitSignUp(details)
     }
-
+    console.log(result[0])
     // Store the JWT into local storage
     if(result.accessToken){
       setToken(result.accessToken)

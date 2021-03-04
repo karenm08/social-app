@@ -38,7 +38,7 @@ export async function getPostComments({postId}) {
 export const onSubmitSignUp = async data => {
   try {
     // Create request to api service
-    const req = await fetch('/api/users', {
+    const res = await fetch('/api/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -51,10 +51,10 @@ export const onSubmitSignUp = async data => {
           password: data.password,
       }),
     });
-    const res = await req.json();
-    res.accessToken ? window.alert("Successfully sign up!") : window.alert("Failed to sign up") 
-    console.log(res);  
-    return res         
+    const result = await res.json();
+    result.accessToken ? window.alert("Successfully sign up!") : window.alert("Failed to sign up") 
+    console.log(result);  
+    return result         
     } catch(err) {
     console.error(`ERROR: ${err}`);
     }
@@ -89,7 +89,7 @@ export const onSubmitLogin = async data => {
 export const submitComment = async (data) => {
   try {
     // Create request to api service
-    const req = await fetch(`/api/posts/${data.postId}/comments`, {
+    const res = await fetch(`/api/posts/${data.postId}/comments`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -101,9 +101,9 @@ export const submitComment = async (data) => {
           text: data.text
       }),
     });
-    const res = await req.json();
+    const result = await res.json();
     // Log success message
-    console.log(res);                
+    console.log(`hi ${result}`);                
     } catch(err) {
     console.error(`ERROR: ${err}`);
     }
