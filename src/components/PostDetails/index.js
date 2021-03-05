@@ -36,7 +36,7 @@ const useStyles = makeStyles({
   }
 })
 
-export default function Post({className, post, submitComment, likeClicked}) {
+export default function Post({className, post, submitComment, likeClicked,token}) {
   let { postId } = useParams()
   const classes = useStyles()
   const [comment, setComment] = useState([])
@@ -63,7 +63,7 @@ export default function Post({className, post, submitComment, likeClicked}) {
   }, [])
 
   const onComment = data => {
-    submitComment({postId: post._id, text: data.comment})
+    submitComment({postId: post._id, text: data.comment,token})
   }
 
   return (

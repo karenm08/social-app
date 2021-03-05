@@ -40,13 +40,13 @@ export default function App() {
           <p>User Name: {user?.username}</p>
         </Route>
         <Route path="/newPost">
-          <NewPostPage></NewPostPage>
+          <NewPostPage token={token}/>
         </Route>
         <Route path="/posts/:postId">
-          <PostDetailsPage></PostDetailsPage>
+          <PostDetailsPage token={token}/>
         </Route>
         <Route path="/">
-          <PostsPage></PostsPage>
+          <PostsPage/>
         </Route>
       </Switch>
     </Router>

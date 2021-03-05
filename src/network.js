@@ -1,4 +1,5 @@
 import axios from 'axios'
+// const token = localStorage.getItem('token')
 
 //--------------------------get all Posts--------------------------------------------//
 export async function getPosts() {
@@ -87,23 +88,25 @@ export const onSubmitLogin = async data => {
 
 //--------------------------save Submit Comment--------------------------------------------//
 export const submitComment = async (data) => {
+
   try {
     // Create request to api service
     const res = await fetch(`/api/posts/${data.postId}/comments`, {
         method: 'POST',
         headers: {
+          'Authorization': `Bearer ${data.token}`,
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
         },
         // format the data
         body: JSON.stringify({
           text: data.text
       }),
     });
+    console.log(data.token)
     const result = await res.json();
     // Log success message
-    console.log(`hi ${result}`);                
+    console.log(result);                
     } catch(err) {
     console.error(`ERROR: ${err}`);
     }
@@ -111,15 +114,13 @@ export const submitComment = async (data) => {
 
 //-------------------------- Submit Post--------------------------------------------//
 // Get the token from local storage
-const token = localStorage.getItem('token')
-
 export const onSubmitPost = async data => {
   try {
     // Create request to api service
     const req = await fetch('/api/posts', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Bearer ${data.token}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
